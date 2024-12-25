@@ -1,0 +1,5 @@
+<!-- CLIENT_ID=1000.VL33SKLQ485BO7H7N6B51TLNYRZAAL
+CLIENT_SECRET=a598f432b168971c83b2c896dab3104defffa226d6
+REDIRECT_URI=http://localhost:3000/oauth/callback
+ZOHO_AUTH_URL=https://accounts.zoho.com/oauth/v2/auth
+ZOHO_TOKEN_URL=https://accounts.zoho.com/oauth/v2/token -->
