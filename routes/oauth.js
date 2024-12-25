@@ -4,7 +4,7 @@ const router = express.Router();
 
 // Hardcoded credentials for testing
 const CLIENT_ID = '1000.MGD6548XE382DEA3140TI08VAA1EFV';
-const CLIENT_SECRET = '4236d0139d2087d7c6e56d6bbed35a8f5728418b35';
+const CLIENT_SECRET = '';
 const REDIRECT_URI = 'http://localhost:3000/oauth/callback';
 const ZOHO_AUTH_URL = 'https://accounts.zoho.com/oauth/v2/auth';
 const ZOHO_TOKEN_URL = 'https://accounts.zoho.com/oauth/v2/token';
