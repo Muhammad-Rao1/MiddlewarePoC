@@ -3,7 +3,7 @@ const axios = require('axios');
 const router = express.Router();
 
 // Hardcoded credentials for testing
-const CLIENT_ID = '1000.MGD6548XE382DEA3140TI08VAA1EFV';
+const CLIENT_ID = '';
 const CLIENT_SECRET = '';
 const REDIRECT_URI = 'http://localhost:3000/oauth/callback';
 const ZOHO_AUTH_URL = 'https://accounts.zoho.com/oauth/v2/auth';
