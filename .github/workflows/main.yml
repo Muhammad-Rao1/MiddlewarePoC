@@ -1,15 +1,14 @@
-name: Bump version
-on:
+on: 
   push:
     branches:
       - main
+
 jobs:
-  build:
+  release-on-push:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@master
-      - name: Bump version and push tag
-        uses: laputansoft/github-tag-action@v4.6
+      - uses: rymndhng/release-on-push-action@master
         with:
-          github_token: ${{ env.github-token }}
-          tag: "34 best version"
+          bump_version_scheme: minor
