@@ -18,7 +18,7 @@ router.get('/authorize', (req, res) => {
 // Step 2: Handle the callback and exchange code for tokens
 router.get('/callback', async (req, res) => {
     const authorizationCode = req.query.code;
-    console.log(authorizationCode);
+    // console.log(authorizationCode);
 
     if (!authorizationCode) {
         return res.status(400).send('Authorization code is missing');
