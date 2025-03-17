@@ -17,7 +17,7 @@ jobs:
       - name: Checkout branch "master"
         uses: actions/checkout@v2
         with:
-          ref: 'master'
+          ref: 'main'
       - name: Tag snapshot
         uses: tvdias/github-tagger@v0.0.1
         with:
