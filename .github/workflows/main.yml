@@ -1,8 +1,10 @@
 name: Nightly Snapshot
 
 on:
-  schedule:
-  - cron: "59 23 * * *"
+  push:
+  branches:
+   -main
+ 
 
 jobs:
   tag:
