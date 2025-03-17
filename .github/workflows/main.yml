@@ -2,8 +2,8 @@ name: Nightly Snapshot
 
 on:
   push:
-  branches:
-   -main
+   branches:
+    -main
  
 
 jobs:
