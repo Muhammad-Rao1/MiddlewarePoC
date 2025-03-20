@@ -17,7 +17,7 @@ jobs:
     - name: Generate Git Tag
       id: generate_tag
       run: |
-        NEW_TAG=github.event.pull_request.title
+        NEW_TAG=${{ github.event.pull_request.title }}
         echo "Generated new tag: $NEW_TAG"
         echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
 
