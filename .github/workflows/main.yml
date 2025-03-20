@@ -23,8 +23,7 @@ jobs:
           $tagMessage = "${{ github.event.pull_request.body }}"
           echo "TAG_NAME=$tagName" | Out-File -FilePath $env:GITHUB_ENV -Append
           git tag -a "$tagName" -m "$tagMessage"
-          git push origin "$tagName"
-        
+          git push origin "$tagName"     
 
       - name: Create the release on the new Tag
         env:
