@@ -23,8 +23,10 @@ jobs:
           git tag -a "$TAG_NAME" -m "$TAG_MESSAGE"
           git push origin "$TAG_NAME"
 
-      - name: Create Release
+      - name: git release 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          $ gh release create "$TAG_NAME" --generate-notes
+          gh release create "$TAG_NAME" --generate-notes --title "$TAG_NAME"
 
       
