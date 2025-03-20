@@ -30,4 +30,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG_NAME: ${{ env.TAG_NAME }}
         run: |
+          gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
           gh release create "$env:TAG_NAME" --generate-notes
