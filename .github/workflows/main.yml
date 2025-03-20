@@ -18,7 +18,7 @@ jobs:
 
       - name: Create Tag
         run: |
-          TAG_NAME=$(echo "${{ github.event.pull_request.title }}" | tr ' ' '-' | tr -cd '[:alnum:]-._')
+          TAG_NAME="${{ github.event.pull_request.title }}" 
           TAG_MESSAGE="${{ github.event.pull_request.body }}"
           git tag -a "$TAG_NAME" -m "$TAG_MESSAGE"
           git push origin "$TAG_NAME"
