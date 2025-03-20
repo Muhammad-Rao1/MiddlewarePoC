@@ -24,7 +24,7 @@ jobs:
           echo "TAG_NAME=$tagName" | Out-File -FilePath $env:GITHUB_ENV -Append
           git tag -a "$tagName" -m "$tagMessage"
           git push origin "$tagName"
-        shell: pwsh
+        
 
       - name: Create the release on the new Tag
         env:
