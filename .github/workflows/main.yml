@@ -22,3 +22,9 @@ jobs:
           TAG_MESSAGE="${{ github.event.pull_request.body }}"
           git tag -a "$TAG_NAME" -m "$TAG_MESSAGE"
           git push origin "$TAG_NAME"
+
+      - name: Create Release
+        run: |
+          $ gh release create "$TAG_NAME" --generate-notes
+
+      
