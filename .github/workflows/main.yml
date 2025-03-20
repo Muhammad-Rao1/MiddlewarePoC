@@ -24,7 +24,7 @@ jobs:
           git tag -a "$TAG_NAME" -m "$TAG_MESSAGE"
           git push origin "$TAG_NAME"
 
-      - name: git release 
+      - name: Create the release on The new Tag 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG_NAME: ${{ env.TAG_NAME}}
