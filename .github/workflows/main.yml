@@ -20,12 +20,14 @@ jobs:
         run: |
           TAG_NAME="${{ github.event.pull_request.title }}" 
           TAG_MESSAGE="${{ github.event.pull_request.body }}"
+          echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
           git tag -a "$TAG_NAME" -m "$TAG_MESSAGE"
           git push origin "$TAG_NAME"
 
       - name: git release 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG_NAME: ${{ env.TAG_NAME}}
         run: |
           gh release create  "$TAG_NAME" --generate-notes 
 
