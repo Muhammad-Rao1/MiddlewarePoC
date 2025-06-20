@@ -30,8 +30,8 @@ jobs:
       - name: Create the release on the new Tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG_NAME: ${{ env.TAG_NAME }}
+          TAG_NAME: ${{vars.TITLEENV }}
           USE_ENV: ${{ vars.TITLEENV}}
 
         run: |
-          gh release create "$USE_ENV" --generate-notes
+          gh release create "$env:TAG_NAME" --generate-notes
