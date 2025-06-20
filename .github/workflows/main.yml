@@ -31,4 +31,4 @@ jobs:
           TAG_NAME: ${{ env.TAG_NAME }}
 
         run: |
-          gh release create "$env:TAG_NAME" --generate-notes
+          gh release create ${{ env.TAG_NAME }} --generate-notes
