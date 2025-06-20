@@ -31,5 +31,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG_NAME: ${{ env.TAG_NAME }}
+          USE_ENV: ${{ vars.TITLEENV}}
+
         run: |
-          gh release create "$env:TAG_NAME" --generate-notes
+          gh release create "$USE_ENV" --generate-notes
