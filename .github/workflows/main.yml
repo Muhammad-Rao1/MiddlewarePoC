@@ -3,12 +3,14 @@ name: Tag and Release on PR Merge
 on:
   pull_request:
     types: [closed]
-    
+
+env:
+  TITLENAME: '${{secrets.TITLENAME}}'
+  
 jobs:
   tag_on_merge:
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
     runs-on: self-hosted
-    environment: production
 
     steps:
       - name: Checkout repo
