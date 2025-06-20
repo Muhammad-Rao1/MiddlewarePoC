@@ -3,7 +3,7 @@ name: Tag and Release on PR Merge
 on:
   pull_request:
     types: [closed]
-
+    
 jobs:
   tag_on_merge:
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
@@ -23,13 +23,14 @@ jobs:
           $tagMessage = "${{ github.event.pull_request.body }}"
           echo "TAG_NAME=$tagName" | Out-File -FilePath $env:GITHUB_ENV -Append
           git tag -a "$tagName" -m "$tagMessage"
-          git push origin "$tagName"
-        shell: pwsh
-        
+
+    
+          git push origin "$tagName"     
       - name: Create the release on the new Tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG_NAME: ${{ env.TAG_NAME }}
+          USE_ENV: ${{ vars.TITLEENV}}
+
         run: |
-          gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
-          gh release create "$env:TAG_NAME" --generate-notes
+          gh release create "$USE_ENV" --generate-notes
