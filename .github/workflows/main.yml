@@ -11,6 +11,8 @@ jobs:
   tag_on_merge:
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
     runs-on: self-hosted
+    environment: production
+
 
     steps:
       - name: Checkout repo
@@ -23,7 +25,7 @@ jobs:
 
       - name: Create Tag
         run: |
-          $tagName = "${{ secrets.TITLENAME }}" 
+          $tagName = "${{ vars.VARIABLE }}" 
           $tagMessage = "${{ github.event.pull_request.body }}"
           echo "TAG_NAME=$tagName" | Out-File -FilePath $env:GITHUB_ENV -Append
           git tag -a "$tagName" -m "$tagMessage"
