@@ -19,7 +19,7 @@ jobs:
 
       - name: Create Tag
         run: |
-          $tagName = "${{ github.event.pull_request.title }}" 
+          $tagName = "${{ vars.TITLEENV }}" 
           $tagMessage = "${{ github.event.pull_request.body }}"
           echo "TAG_NAME=$tagName" | Out-File -FilePath $env:GITHUB_ENV -Append
           git tag -a "$tagName" -m "$tagMessage"
@@ -28,7 +28,7 @@ jobs:
       - name: Create the release on the new Tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG_NAME: ${{vars.TAG_NAME }}
+          TAG_NAME: ${{ env.TAG_NAME }}
 
         run: |
-          gh release create ${{ vars.TITLEENV }} --generate-notes
+          gh release create "$env:TAG_NAME" --generate-notes
