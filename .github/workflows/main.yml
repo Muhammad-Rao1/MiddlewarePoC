@@ -21,10 +21,9 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
-
       - name: Create Tag
         run: |
-          $tagName = ${{ secrets.TITLENAME }}
+          $tagName = "${{ secrets.TITLENAME }}" 
           $tagMessage = "${{ github.event.pull_request.body }}"
           echo "TAG_NAME=$tagName" | Out-File -FilePath $env:GITHUB_ENV -Append
           git tag -a "$tagName" -m "$tagMessage"
