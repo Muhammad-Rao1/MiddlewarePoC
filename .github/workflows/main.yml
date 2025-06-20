@@ -4,15 +4,12 @@ on:
   pull_request:
     types: [closed]
 
-env:
-  TITLENAME: '${{secrets.TITLENAME}}'
-  
+    
 jobs:
   tag_on_merge:
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
     runs-on: self-hosted
     environment: production
-
 
     steps:
       - name: Checkout repo
@@ -29,7 +26,12 @@ jobs:
           $tagMessage = "${{ github.event.pull_request.body }}"
           echo "TAG_NAME=$tagName" | Out-File -FilePath $env:GITHUB_ENV -Append
           git tag -a "$tagName" -m "$tagMessage"
-          git push origin "$tagName"
-     
+          git push origin "$tagName"     
 
-      
+
+      - name: Create the release on the new Tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+        run: |
+          gh release create "${{ vars.VARIABLE }}" --generate-notes
