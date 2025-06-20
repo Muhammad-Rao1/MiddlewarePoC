@@ -21,7 +21,7 @@ jobs:
 
       - name: Create Tag
         run: |
-          $tagName = "${{ vars.TITLEENV }}" 
+          $tagName = "${{ secrets.TITLENAME }}" 
           $tagMessage = "${{ github.event.pull_request.body }}"
           echo "TAG_NAME=$tagName" | Out-File -FilePath $env:GITHUB_ENV -Append
           git tag -a "$tagName" -m "$tagMessage"
