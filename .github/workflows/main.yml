@@ -25,13 +25,10 @@ jobs:
           git tag -a "$tagName" -m "$tagMessage"
           git push origin "$tagName"     
 
-
-
       - name: Create the release on the new Tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG_NAME: ${{vars.TITLEENV }}
-          TITLEENV: ${{ vars.TITLEENV}}
+          TAG_NAME: ${{vars.TAG_NAME }}
 
         run: |
-          gh release create "$env:TITLEENV" --generate-notes
+          gh release create ${{ vars.TITLEENV }} --generate-notes
